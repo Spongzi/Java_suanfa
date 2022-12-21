@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/_01_complexity/_01_complexity.iml" filepath="$PROJECT_DIR$/_01_complexity/_01_complexity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_02_dynamic_arrays/_02_dynamic_arrays.iml" filepath="$PROJECT_DIR$/_02_dynamic_arrays/_02_dynamic_arrays.iml" />
       <module fileurl="file://$PROJECT_DIR$/suanfaxuexi.iml" filepath="$PROJECT_DIR$/suanfaxuexi.iml" />
     </modules>
   </component>
