@@ -8,7 +8,24 @@ package com.spongzi;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println(fib2(64));
+        int n = 46;
+        /*
+           执行结果
+           【fib1】
+            开始：17:14:03:078
+            1836311903
+            结束：17:14:03:388
+            耗时：5.654秒
+            -------------------------------------
+            【fib2】
+            开始：17:14:03:405
+            1836311903
+            结束：17:14:03:405
+            耗时：0.0秒
+            -------------------------------------
+         */
+        TimeTool.check("fib1", () -> System.out.println(fib1(n)));
+        TimeTool.check("fib2", () -> System.out.println(fib2(n)));
     }
 
     /**
