@@ -1,5 +1,7 @@
 package com.spongzi;
 
+import java.util.Arrays;
+
 /**
  * 数组列表(手写)
  *
@@ -47,12 +49,16 @@ public class ArrayList<T> {
     /**
      * 清除所有元素
      * <p>
+     * 只存放int的时候
      * 这里不对elements数组进行清空是因为只要size=0就访问不到数组里的元素
      * 所以我们不再进行对数组清空的操作
      * 并且如果清空元素,那么下次再进行操作的时候还要再次单独申请内存
      * 如果但是数组过于庞大,可以进行判断,分开操作
+     * </p>
      */
     public void clear() {
+        // 现在需要把里面的对象全部清空
+        Arrays.fill(elements, null);
         size = 0;
     }
 
@@ -166,7 +172,7 @@ public class ArrayList<T> {
         for (int i = index + 1; i < size; i++) {
             elements[i - 1] = elements[i];
         }
-        size--;
+        elements[--size] = null;
         return returnValue;
     }
 
