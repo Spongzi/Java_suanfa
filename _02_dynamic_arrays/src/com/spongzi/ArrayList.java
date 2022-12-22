@@ -119,7 +119,7 @@ public class ArrayList<T> {
      */
     public int indexOf(T element) {
         for (int i = 0; i < size; i++) {
-            if (elements[i] == element) {
+            if (elements[i].equals(element)) {
                 return i;
             }
         }
@@ -210,4 +210,5 @@ public class ArrayList<T> {
         sb.append("]");
         return sb.toString();
     }
+
 }
