@@ -19,7 +19,7 @@ public class Main {
          */
         int[] array = new int[]{22, 33, 44};
 
-        ArrayList list = new ArrayList();
+        ArrayList<Integer> list = new ArrayList<>();
         list.add(11);
         list.add(22);
         list.add(33);

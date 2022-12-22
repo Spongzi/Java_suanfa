@@ -6,7 +6,8 @@ package com.spongzi;
  * @author spong
  * @date 2022/12/21
  */
-public class ArrayList {
+@SuppressWarnings("unchecked")
+public class ArrayList<T> {
 
     /**
      * 元素数量
@@ -16,7 +17,7 @@ public class ArrayList {
     /**
      * 所有元素
      */
-    private int[] elements;
+    private T[] elements;
 
     /**
      * 默认上限
@@ -36,7 +37,7 @@ public class ArrayList {
     public ArrayList(int cap) {
         // 如果当前输入的容量小于默认的那么就选用默认的大小
         cap = Math.max(cap, DEFAULT_CAP);
-        elements = new int[cap];
+        elements = (T[]) new Object[cap];
     }
 
     public ArrayList() {
@@ -81,7 +82,7 @@ public class ArrayList {
      * @param index 当前要查找的下标
      * @return int 查找到的值
      */
-    public int get(int index) {
+    public T get(int index) {
         if (index < 0 || index >= size) {
             throw new ArrayIndexOutOfBoundsException("下标Index" + index + "不存在, Index应该在0-" + size + "之间");
         }
@@ -95,11 +96,11 @@ public class ArrayList {
      * @param element 元素
      * @return int 原来的值
      */
-    public int set(int index, int element) {
+    public T set(int index, T element) {
         if (index < 0 || index >= size) {
             throw new ArrayIndexOutOfBoundsException("下标Index" + index + "不存在, Index应该在0-" + size + "之间");
         }
-        int oldElement = elements[index];
+        T oldElement = elements[index];
         elements[index] = element;
         return oldElement;
     }
@@ -110,7 +111,7 @@ public class ArrayList {
      * @param element 元素
      * @return 元素下标--如果没有找到返回-1
      */
-    public int indexOf(int element) {
+    public int indexOf(T element) {
         for (int i = 0; i < size; i++) {
             if (elements[i] == element) {
                 return i;
@@ -125,7 +126,7 @@ public class ArrayList {
      * @param element 要查询的元素
      * @return boolean 存在 -- true 否则 false
      */
-    public boolean contains(int element) {
+    public boolean contains(T element) {
         return indexOf(element) != ELEMENT_NOT_FOUNT;
     }
 
@@ -134,11 +135,11 @@ public class ArrayList {
      *
      * @param element 元素
      */
-    public void add(int element) {
+    public void add(T element) {
         add(size, element);
     }
 
-    public void add(int index, int element) {
+    public void add(int index, T element) {
         if (index < 0 || index > size) {
             throw new ArrayIndexOutOfBoundsException("下标Index" + index + "不存在, Index应该在0-" + size + "之间");
         }
@@ -157,11 +158,11 @@ public class ArrayList {
      * @param index 下标
      * @return int 返回删除的数据
      */
-    public int remove(int index) {
+    public T remove(int index) {
         if (index < 0 || index >= size) {
             throw new ArrayIndexOutOfBoundsException("下标Index" + index + "不存在, Index应该在0-" + size + "之间");
         }
-        int returnValue = elements[index];
+        T returnValue = elements[index];
         for (int i = index + 1; i < size; i++) {
             elements[i - 1] = elements[i];
         }
@@ -180,7 +181,7 @@ public class ArrayList {
             return;
         }
         int newCapacity = oldCapacity + (oldCapacity >> 1);
-        int[] newElements = new int[newCapacity];
+        T[] newElements = (T[]) new Object[newCapacity];
         System.arraycopy(elements, 0, newElements, 0, elements.length);
         elements = newElements;
     }
