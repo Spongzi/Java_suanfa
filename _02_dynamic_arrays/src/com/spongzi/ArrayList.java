@@ -1,7 +1,5 @@
 package com.spongzi;
 
-import java.util.Spliterator;
-
 /**
  * 数组列表(手写)
  *
@@ -114,7 +112,9 @@ public class ArrayList {
      */
     public int indexOf(int element) {
         for (int i = 0; i < size; i++) {
-            if (elements[i] == element) return i;
+            if (elements[i] == element) {
+                return i;
+            }
         }
         return ELEMENT_NOT_FOUNT;
     }
@@ -135,7 +135,6 @@ public class ArrayList {
      * @param element 元素
      */
     public void add(int element) {
-        // TODO: 2022/12/21 扩容
         add(size, element);
     }
 
@@ -143,7 +142,7 @@ public class ArrayList {
         if (index < 0 || index > size) {
             throw new ArrayIndexOutOfBoundsException("下标Index" + index + "不存在, Index应该在0-" + size + "之间");
         }
-        // TODO: 2022/12/21 扩容
+        expansion(size + 1);
 
         for (int i = size - 1; i >= index; i--) {
             elements[i + 1] = elements[i];
@@ -171,6 +170,22 @@ public class ArrayList {
     }
 
     /**
+     * 扩容操作
+     *
+     * @param capacity 容量
+     */
+    private void expansion(int capacity) {
+        int oldCapacity = elements.length;
+        if (oldCapacity > capacity) {
+            return;
+        }
+        int newCapacity = oldCapacity + (oldCapacity >> 1);
+        int[] newElements = new int[newCapacity];
+        System.arraycopy(elements, 0, newElements, 0, elements.length);
+        elements = newElements;
+    }
+
+    /**
      * 字符串 -- 格式化输出
      *
      * @return {@link String}
@@ -179,6 +194,7 @@ public class ArrayList {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("size = ").append(size);
+        sb.append(", capacity = ").append(elements.length);
         sb.append(", [");
         for (int i = 0; i < size; i++) {
             sb.append(elements[i]);
