@@ -118,9 +118,17 @@ public class ArrayList<T> {
      * @return 元素下标--如果没有找到返回-1
      */
     public int indexOf(T element) {
-        for (int i = 0; i < size; i++) {
-            if (elements[i].equals(element)) {
-                return i;
+        if (element == null) {
+            for (int i = 0; i < size; i++) {
+                if (elements[i] == null) {
+                    return i;
+                }
+            }
+        } else {
+            for (int i = 0; i < size; i++) {
+                if (element.equals(elements[i])) {
+                    return i;
+                }
             }
         }
         return ELEMENT_NOT_FOUNT;
