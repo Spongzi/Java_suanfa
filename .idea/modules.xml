@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/_01_complexity/_01_complexity.iml" filepath="$PROJECT_DIR$/_01_complexity/_01_complexity.iml" />
       <module fileurl="file://$PROJECT_DIR$/_02_dynamic_arrays/_02_dynamic_arrays.iml" filepath="$PROJECT_DIR$/_02_dynamic_arrays/_02_dynamic_arrays.iml" />
+      <module fileurl="file://$PROJECT_DIR$/_03_linked_list/_03_linked_list.iml" filepath="$PROJECT_DIR$/_03_linked_list/_03_linked_list.iml" />
       <module fileurl="file://$PROJECT_DIR$/suanfaxuexi.iml" filepath="$PROJECT_DIR$/suanfaxuexi.iml" />
     </modules>
   </component>
