@@ -7,6 +7,8 @@ package com.spongzi;
  * @date 2022/12/22
  */
 public interface List<T> {
+    int ELEMENT_NOT_FOUNT = -1;
+
     /**
      * 清除所有元素
      */

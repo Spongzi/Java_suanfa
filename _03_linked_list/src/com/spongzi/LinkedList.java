@@ -6,7 +6,7 @@ package com.spongzi;
  * @author spong
  * @date 2022/12/22
  */
-public class LinkedList<T> {
+public class LinkedList<T> implements List<T> {
     /**
      * 大小
      */
@@ -45,4 +45,63 @@ public class LinkedList<T> {
             this.next = next;
         }
     }
+
+    /**
+     * 没有找到元素
+     */
+
+    @Override
+    public void clear() {
+        this.size = 0;
+        this.head = null;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    @Override
+    public T get(int index) {
+        return null;
+    }
+
+    @Override
+    public T set(int index, T element) {
+        return null;
+    }
+
+    @Override
+    public int indexOf(T element) {
+        return 0;
+    }
+
+    @Override
+    public boolean contains(T element) {
+        return indexOf(element) != ELEMENT_NOT_FOUNT;
+    }
+
+    @Override
+    public void add(T element) {
+        add(size, element);
+    }
+
+    @Override
+    public void add(int index, T element) {
+        if (index < 0 || index > size) {
+            throw new ArrayIndexOutOfBoundsException("index not in [ 0, " + size + " ]");
+        }
+        
+    }
+
+    @Override
+    public T remove(int index) {
+        return null;
+    }
+
 }
