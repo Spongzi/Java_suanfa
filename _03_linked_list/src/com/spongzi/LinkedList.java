@@ -27,7 +27,7 @@ public class LinkedList<T> implements List<T> {
         /**
          * 元素
          */
-        T elementE;
+        T element;
 
         /**
          * 指向下一个指针
@@ -37,11 +37,11 @@ public class LinkedList<T> implements List<T> {
         /**
          * 构造函数
          *
-         * @param elementE 元素
-         * @param next     下一个
+         * @param element 元素
+         * @param next    下一个
          */
-        public Node(T elementE, Node<T> next) {
-            this.elementE = elementE;
+        public Node(T element, Node<T> next) {
+            this.element = element;
             this.next = next;
         }
     }
@@ -68,17 +68,34 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public T get(int index) {
-        return null;
+        if (index < 0 || index >= size) {
+            throw new ArrayIndexOutOfBoundsException("index not in [ 0, " + size + " ]");
+        }
+        return this.node(index).element;
     }
 
     @Override
     public T set(int index, T element) {
-        return null;
+        if (index < 0 || index >= size) {
+            throw new ArrayIndexOutOfBoundsException("index not in [ 0, " + size + " ]");
+        }
+        Node<T> oldNode = this.node(index);
+        oldNode.element = element;
+        return oldNode.element;
     }
 
     @Override
     public int indexOf(T element) {
-        return 0;
+        Node<T> currentNode = this.head;
+        int index = 0;
+        while (currentNode != null) {
+            if (currentNode.element == element) {
+                return index;
+            }
+            currentNode = currentNode.next;
+            index++;
+        }
+        return ELEMENT_NOT_FOUNT;
     }
 
     @Override
@@ -96,12 +113,56 @@ public class LinkedList<T> implements List<T> {
         if (index < 0 || index > size) {
             throw new ArrayIndexOutOfBoundsException("index not in [ 0, " + size + " ]");
         }
-        
+        if (size == 0) {
+            this.head = new Node<>(element, null);
+            size++;
+            return;
+        }
+        Node<T> curNode = this.node(index);
+        Node<T> preNode = this.node(index - 1);
+        preNode.next = new Node<>(element, curNode == null ? null : curNode.next);
+        size++;
     }
 
     @Override
     public T remove(int index) {
-        return null;
+        if (index < 0 || index >= size) {
+            throw new ArrayIndexOutOfBoundsException("index not in [ 0, " + size + " ]");
+        }
+        T returnValue;
+        if (index == 0) {
+            returnValue = head.element;
+            head = head.next;
+            return returnValue;
+        }
+        Node<T> curNode = this.node(index);
+        returnValue = curNode.element;
+        Node<T> preNode = this.node(index - 1);
+        preNode.next = curNode.next;
+        return returnValue;
     }
 
+    private Node<T> node(int index) {
+        if (index < 0 || index > size) {
+            throw new ArrayIndexOutOfBoundsException("index not in [ 0, " + size + " ]");
+        }
+        Node<T> returnNode = head;
+        for (int i = 0; i < index; i++) {
+            returnNode = returnNode.next;
+        }
+        return returnNode;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+        string.append("[");
+        Node<T> node = head;
+        while (node != null) {
+            string.append(node.element).append(node.next == null ? "" : ", ");
+            node = node.next;
+        }
+        string.append("]");
+        return string.toString();
+    }
 }
