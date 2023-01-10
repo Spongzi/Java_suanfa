@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="LeetcodeEditorPro">
+    <option name="a">
+      <map>
+        <entry key="$PROJECT_DIR$/../../../Temp/LeetCode/leetcode/editor/cn/[2180]统计各位数字之和为偶数的整数个数.go">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../../Temp/LeetCode/leetcode/editor/cn/doc/content/[2180]统计各位数字之和为偶数的整数个数.md" />
+              <option name="frontendQuestionId" value="leetcode.cn2180" />
+              <option name="host" value="leetcode.cn" />
+              <option name="langSlug" value="golang" />
+              <option name="path" value="$PROJECT_DIR$/../../../Temp/LeetCode/leetcode/editor/cn/[2180]统计各位数字之和为偶数的整数个数.go" />
+              <option name="titleSlug" value="count-integers-with-even-digit-sum" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../../Temp/LeetCode/leetcode/editor/cn/[2180]统计各位数字之和为偶数的整数个数.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/../../../Temp/LeetCode/leetcode/editor/cn/doc/content/[2180]统计各位数字之和为偶数的整数个数.md" />
+              <option name="frontendQuestionId" value="leetcode.cn2180" />
+              <option name="host" value="leetcode.cn" />
+              <option name="langSlug" value="java" />
+              <option name="path" value="$PROJECT_DIR$/../../../Temp/LeetCode/leetcode/editor/cn/[2180]统计各位数字之和为偶数的整数个数.java" />
+              <option name="titleSlug" value="count-integers-with-even-digit-sum" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
