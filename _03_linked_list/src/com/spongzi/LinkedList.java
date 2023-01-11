@@ -18,6 +18,11 @@ public class LinkedList<T> implements List<T> {
     private Node<T> head;
 
     /**
+     * 尾结点
+     */
+    private Node<T> last;
+
+    /**
      * 节点
      *
      * @author spong
@@ -35,14 +40,20 @@ public class LinkedList<T> implements List<T> {
         Node<T> next;
 
         /**
+         * 指向上一个指针
+         */
+        Node<T> prev;
+
+        /**
          * 构造函数
          *
          * @param element 元素
          * @param next    下一个
          */
-        public Node(T element, Node<T> next) {
+        public Node(T element, Node<T> next, Node<T> prev) {
             this.element = element;
             this.next = next;
+            this.prev = prev;
         }
     }
 
@@ -54,6 +65,7 @@ public class LinkedList<T> implements List<T> {
     public void clear() {
         this.size = 0;
         this.head = null;
+        this.last = null;
     }
 
     @Override
@@ -113,14 +125,22 @@ public class LinkedList<T> implements List<T> {
         if (index < 0 || index > size) {
             throw new ArrayIndexOutOfBoundsException("index not in [ 0, " + size + " ]");
         }
-        if (size == 0) {
-            this.head = new Node<>(element, null);
-            size++;
-            return;
+        if (index == size) {
+            // 最后一个
+            Node<T> oldLast = last;
+            last = new Node<>(element, null, last);
+            oldLast.next = last;
+        } else {
+            Node<T> next = node(index);
+            Node<T> prev = next.prev;
+            Node<T> node = new Node<>(element, next, prev);
+            next.prev = node;
+            if (prev == null) {
+                head = node;
+            } else {
+                prev.next = node;
+            }
         }
-        Node<T> curNode = this.node(index);
-        Node<T> preNode = this.node(index - 1);
-        preNode.next = new Node<>(element, curNode == null ? null : curNode.next);
         size++;
     }
 
@@ -146,9 +166,18 @@ public class LinkedList<T> implements List<T> {
         if (index < 0 || index > size) {
             throw new ArrayIndexOutOfBoundsException("index not in [ 0, " + size + " ]");
         }
-        Node<T> returnNode = head;
-        for (int i = 0; i < index; i++) {
-            returnNode = returnNode.next;
+        // 索引靠近左边
+        if (index < (size >> 1)) {
+            Node<T> returnNode = head;
+            for (int i = 0; i < index; i++) {
+                returnNode = returnNode.next;
+            }
+            return returnNode;
+        }
+        // 索引靠近右边
+        Node<T> returnNode = last;
+        for (int i = size - 1; i > index; i--) {
+            returnNode = returnNode.prev;
         }
         return returnNode;
     }
