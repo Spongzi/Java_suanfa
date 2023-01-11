@@ -153,17 +153,27 @@ public class LinkedList<T> implements List<T> {
         if (index < 0 || index >= size) {
             throw new ArrayIndexOutOfBoundsException("index not in [ 0, " + size + " ]");
         }
-        T returnValue;
-        if (index == 0) {
-            returnValue = head.element;
-            head = head.next;
-            return returnValue;
+        Node<T> node = node(index);
+        Node<T> prev = node.prev;
+        Node<T> next = node.next;
+
+        // 处理删除第一个元素
+        if (prev == null) {
+            // index == 0
+            head = next;
+        } else {
+            prev.next = next;
         }
-        Node<T> curNode = this.node(index);
-        returnValue = curNode.element;
-        Node<T> preNode = this.node(index - 1);
-        preNode.next = curNode.next;
-        return returnValue;
+
+        // 处理删除最后一个元素
+        if (next == null) {
+            // index == size - 1
+            last = prev;
+        } else {
+            next.prev = prev;
+        }
+        this.size--;
+        return node.element;
     }
 
     private Node<T> node(int index) {
