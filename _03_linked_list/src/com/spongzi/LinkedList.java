@@ -129,7 +129,11 @@ public class LinkedList<T> implements List<T> {
             // 最后一个
             Node<T> oldLast = last;
             last = new Node<>(element, null, last);
-            oldLast.next = last;
+            if (oldLast == null) {
+                head = last;
+            } else {
+                oldLast.next = last;
+            }
         } else {
             Node<T> next = node(index);
             Node<T> prev = next.prev;
